@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { loadAboutData } from "../actions/about";
 
-const About = () => {
+const About = ({ loadAboutData }) => {
     const { t } = useTranslation();
 
-    return <h1>{t("About-title")}</h1>;
+    useEffect(() => {
+        loadAboutData();
+    }, [loadAboutData]);
+
+    return <h1>{t("aboutTitle")}</h1>;
 };
 
-export default About;
+const mapStateToProps = (state) => ({
+    aboutData: state.aboutData,
+});
+
+export default connect(mapStateToProps, { loadAboutData })(About);

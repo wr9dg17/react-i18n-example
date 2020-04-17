@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
-import { Switch, Route, Link, NavLink } from "react-router-dom";
+import { Switch, Route, NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { setLanguage } from "./actions/lang";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -9,18 +11,21 @@ import NotFound from "./pages/NotFound";
 
 import logo from "./logo.svg";
 
-const App = ({ match }) => {
+const App = ({ match, setLanguage }) => {
     const { t, i18n } = useTranslation();
-    const lang = match.path.replace("/", "");
+    let lang = match.path.replace("/", "");
     
+    setLanguage(lang);
+
     useEffect(() => {
+        setLanguage(lang);
+
         if (lang === "") {
             i18n.changeLanguage("az");
-            localStorage.setItem("lang", "az");
         } else {
             i18n.changeLanguage(lang);
-            localStorage.setItem("lang", lang);
         }
+        // eslint-disable-next-line
     }, [i18n, lang]);
 
     return (
@@ -28,13 +33,13 @@ const App = ({ match }) => {
             <header className="App-header">
                 <ul className="langs">
                     <li>
-                        <Link to="/">AZ</Link>
+                        <a href="/">AZ</a>
                     </li>
                     <li>
-                        <Link to="/ru">RU</Link>
+                        <a href="/ru">RU</a>
                     </li>
                     <li>
-                        <Link to="/en">EN</Link>
+                        <a href="/en">EN</a>
                     </li>
                 </ul>
 
@@ -72,4 +77,4 @@ const App = ({ match }) => {
     );
 };
 
-export default App;
+export default connect(null, { setLanguage })(App);

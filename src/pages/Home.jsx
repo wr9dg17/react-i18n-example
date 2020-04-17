@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { loadHomeData } from "../actions/home";
 
-const Home = () => {
+const Home = ({ loadHomeData }) => {
     const { t } = useTranslation();
 
-    return <h1>{t("Home-title")}</h1>;
+    useEffect(() => {
+        loadHomeData();
+    }, [loadHomeData]);
+
+    return <h1>{t("homeTitle")}</h1>;
 };
 
-export default Home;
+const mapStateToProps = (state) => ({
+    homeData: state.homeData,
+});
+
+export default connect(mapStateToProps, { loadHomeData })(Home);

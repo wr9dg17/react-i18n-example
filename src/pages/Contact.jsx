@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { loadContactData } from "../actions/contact";
 
-const Contact = () => {
+const Contact = ({ loadContactData }) => {
     const { t } = useTranslation();
 
-    return <h1>{t("Contact-title")}</h1>;
+    useEffect(() => {
+        loadContactData();
+    }, [loadContactData]);
+
+    return <h1>{t("contactTitle")}</h1>;
 };
 
-export default Contact;
+const mapStateToProps = (state) => ({
+    contactData: state.contactData,
+});
+
+export default connect(mapStateToProps, { loadContactData })(Contact);

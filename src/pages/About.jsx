@@ -14,7 +14,7 @@ const About = ({ loadAboutData }) => {
 };
 
 const mapStateToProps = (state) => ({
-    aboutData: state.aboutData,
+    aboutData: state.about,
 });
 
 export default connect(mapStateToProps, { loadAboutData })(About);

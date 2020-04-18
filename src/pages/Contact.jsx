@@ -14,7 +14,7 @@ const Contact = ({ loadContactData }) => {
 };
 
 const mapStateToProps = (state) => ({
-    contactData: state.contactData,
+    contactData: state.contact,
 });
 
 export default connect(mapStateToProps, { loadContactData })(Contact);

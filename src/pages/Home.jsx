@@ -14,7 +14,7 @@ const Home = ({ loadHomeData }) => {
 };
 
 const mapStateToProps = (state) => ({
-    homeData: state.homeData,
+    homeData: state.home,
 });
 
 export default connect(mapStateToProps, { loadHomeData })(Home);

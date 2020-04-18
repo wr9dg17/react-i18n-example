@@ -9,12 +9,12 @@ export default (state = initialState, action) => {
         case SET_LANGUAGE:
             if (action.payload === "") {
                 return {
-                    currentLang: "az"
-                }
+                    currentLang: "az",
+                };
             } else {
                 return {
-                    currentLang: action.payload
-                }
+                    currentLang: action.payload,
+                };
             }
         default:
             return state;

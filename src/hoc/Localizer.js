@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { useRouteMatch } from "react-router-dom";
 
 import { setLanguage } from "../actions/lang";

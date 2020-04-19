@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, useRouteMatch } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+import LanguageSwitcher from "./ui/LanguageSwitcher";
 import logo from "../logo.svg";
 
 const Header = () => {
@@ -10,17 +11,7 @@ const Header = () => {
 
     return (
         <header className="App-header">
-            <ul className="langs">
-                <li>
-                    <a href="/">AZ</a>
-                </li>
-                <li>
-                    <a href="/ru">RU</a>
-                </li>
-                <li>
-                    <a href="/en">EN</a>
-                </li>
-            </ul>
+            <LanguageSwitcher />
 
             <ul className="menu">
                 <li>
@@ -39,6 +30,7 @@ const Header = () => {
                     </NavLink>
                 </li>
             </ul>
+            
             <img src={logo} className="App-logo" alt="logo" />
         </header>
     );

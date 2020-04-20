@@ -10,7 +10,7 @@ const LanguageSwitcher = () => {
         }
 
         if (paths.length > 0) {
-            if (paths[0].length === 2 && paths[0] !== lang) {
+            if (paths[0].length === 2) {
                 paths[0] = lang;
             } else {
                 paths.unshift(lang);
